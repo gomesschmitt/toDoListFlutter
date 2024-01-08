@@ -23,8 +23,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        colorScheme:
-            ColorScheme.fromSeed(seedColor: Color.fromARGB(255, 30, 0, 255)),
+        colorScheme: ColorScheme.fromSeed(
+            seedColor: const Color.fromARGB(255, 30, 0, 255)),
         useMaterial3: true,
       ),
       home: const MyHomePage(title: 'To Do List'),
@@ -93,9 +93,9 @@ class _MyHomePageState extends State<MyHomePage> {
               _showAddToDoDialog(context);
             },
             style: ElevatedButton.styleFrom(
-              padding: EdgeInsets.all(16),
+              padding: const EdgeInsets.all(16),
             ),
-            child: Row(
+            child: const Row(
               mainAxisSize: MainAxisSize.min,
               children: [
                 Icon(Icons.add, size: 36),
@@ -114,20 +114,20 @@ class _MyHomePageState extends State<MyHomePage> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Add ToDo'),
+          title: const Text('Add ToDo'),
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               TextField(
                 controller: textController,
                 maxLines: 3,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   hintText: 'Enter ToDo',
                   border: OutlineInputBorder(),
                 ),
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
@@ -135,14 +135,14 @@ class _MyHomePageState extends State<MyHomePage> {
                     onPressed: () {
                       Navigator.of(context).pop();
                     },
-                    child: Text('Cancel'),
+                    child: const Text('Cancel'),
                   ),
                   TextButton(
                     onPressed: () {
                       _addNewToDo();
                       Navigator.of(context).pop();
                     },
-                    child: Text('Add'),
+                    child: const Text('Add'),
                   ),
                 ],
               ),
@@ -174,20 +174,20 @@ class _MyHomePageState extends State<MyHomePage> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Edit ToDo'),
+          title: const Text('Edit ToDo'),
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               TextField(
                 controller: editController,
                 maxLines: 3,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   hintText: 'Edit ToDo',
                   border: OutlineInputBorder(),
                 ),
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
@@ -195,14 +195,14 @@ class _MyHomePageState extends State<MyHomePage> {
                     onPressed: () {
                       Navigator.of(context).pop();
                     },
-                    child: Text('Cancel'),
+                    child: const Text('Cancel'),
                   ),
                   TextButton(
                     onPressed: () {
                       _editToDo();
                       Navigator.of(context).pop();
                     },
-                    child: Text('Save'),
+                    child: const Text('Save'),
                   ),
                 ],
               ),
@@ -229,7 +229,8 @@ class ToDoItem extends StatelessWidget {
   final Function() onDeleteItem;
   final Function() onEditItem;
 
-  ToDoItem({
+  const ToDoItem({
+    super.key,
     required this.todo,
     required this.onToDoChanged,
     required this.onDeleteItem,
@@ -267,11 +268,11 @@ class ToDoItem extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           IconButton(
-            icon: Icon(Icons.edit),
+            icon: const Icon(Icons.edit),
             onPressed: onEditItem,
           ),
           IconButton(
-            icon: Icon(Icons.delete),
+            icon: const Icon(Icons.delete),
             onPressed: onDeleteItem,
           ),
         ],
